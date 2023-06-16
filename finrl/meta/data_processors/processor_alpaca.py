@@ -78,9 +78,7 @@ class AlpacaProcessor:
             if len(df[df.timestamp == time].index) < n_tickers:
                 df = df[df.timestamp != time]
 
-        start = pd.to_datetime(start).tz_localize('UTC')
-        end = pd.to_datetime(end).tz_localize('UTC')    
-        trading_days = self.get_trading_days(start=self.start, end=self.end)
+        trading_days = self.get_trading_days(start=pd.to_datetime(self.start).tz_localize('UTC'), end=pd.to_datetime(self.end).tz_localize('UTC')    )
         # produce full timestamp index
         times = []
         for day in trading_days:
