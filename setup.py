@@ -23,7 +23,7 @@ setup(
     include_package_data=True,
     author="Hongyang Yang, Xiaoyang Liu, Ming Zhu",
     author_email="hy2500@columbia.edu",
-    url="https://github.com/finrl/finrl-library",
+    url="https://github.com/brendle1234/Investing_Bot.git",
     license="MIT",
     packages=find_packages(),
     description="FinRL: Financial Reinforcement Learning Framework.",
