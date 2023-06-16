@@ -33,7 +33,16 @@ class AlpacaProcessor:
         """
         self.start = start_date
         self.end = end_date
-        self.time_interval = time_interval
+
+        # Map time_interval to a format pandas can understand
+        interval_mapping = {
+            "1D": "1 days",
+            "1H": "1 hours",
+            "1M": "1 minutes",
+            "1S": "1 seconds"
+            # Add more mappings if necessary
+        }
+        self.time_interval = interval_mapping.get(time_interval, time_interval)
 
         # download
         NY = "America/New_York"
@@ -41,7 +50,7 @@ class AlpacaProcessor:
         end_date = pd.Timestamp(end_date + " 15:59:00", tz=NY)
         barset = self.api.get_bars(
             ticker_list,
-            time_interval,
+            self.time_interval,
             start=start_date.isoformat(),
             end=end_date.isoformat(),
         ).df
